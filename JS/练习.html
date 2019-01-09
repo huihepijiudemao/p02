@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内容操作练习</title>
+</head>
+<body>
+    <div id="show"></div>
+    <div id="main"></div>
+    <div id="foot"></div>
+    <div class="head"></div>
+    <div class="food"></div>
+    
+    <form action="">
+            <h3>查找您要收看的课程</h3>
+            <input type="submit" value="搜索">
+            <select name="" id="">
+                <optgroup label="HTML5系列">
+                    <option value="HTML5">HTML5</option>
+                    <option value="class3">css3</option>
+                    <option value="js">js</option>
+                </optgroup>
+                <optgroup label="建筑制图系列">
+                    <option value="CAD" label="建筑CAD制图">CAD制图</option>
+                                           优先选项
+                    <option value="tz">天正建筑</option>
+                </optgroup>
+            </select>
+        </form>
+    <script>
+     //1.找到指定标签
+        var show = document.getElementById('show')
+        //找到对应的标签
+        console.log(show)
+        var main = document.getElementById('main')
+        //找到对应的标签
+        console.log(main)
+        var foot = document.getElementById('foot')
+        //找到对应的标签
+        console.log(foot)
+        var head = document.getElementsByClassName('head')
+        //找到对应的标签
+        console.log(head)
+        var food = document.getElementsByClassName('food')
+        //找到对应的标签
+        console.log(food)
+    //2、给标签添加内容
+    //show.innerText = '只添加文本'
+    //show.innerHTMl = '<h1>标题</h1>'
+        // show.innerText = '你好世界'
+        show.innerHTML = '<h1>HTML文本</h1>'
+        main.innerHTML = '<h1>HTML文本</h1>'
+        
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+        .title{
+            cursor: pointer;
+            /* //鼠标移过是个小手 */
+            float: left;
+            padding: 0 20px;
+            border: 1px solid black;
+            background-color: #eee;
+        }
+        #show{
+            border-right: 1px solid  black;
+            min-height: 300px;
+            padding: 10px;
+            background:linear-gradient(to bottom,lightskyblue,white);
+            position: relative;
+            top: -1px;
+            z-index: -1;
+        }
+        .selected{
+            border-bottom: 1px solid lightskyblue;
+            background-color: lightskyblue;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="title selected">首页</div>
+    <div class="title">新闻</div>
+    <div class="title">公告</div>
+    <div id="show">zxcvbn</div>
+</body>
+<script>
+    //1.获取数据源
+    var homePage = '<h1>首页</h1><p>这是首页内容</p>'
+    var newsPage = '<h1>新闻</h1><p>这是新闻内容</p>'
+    var bbsPage = '<h1>公告</h1><p>这是公告<内容</p>'
+
+    var content = [homePage,newsPage,bbsPage]
+
+    //2.显示默认内容
+    var show = document.querySelector('#show')
+    show.innerHTML = content[0]
+
+    //3.记录一下，当前第几个被选中
+    var titles = document.querySelectorAll('.title')
+    currentPage = titles[0]
+
+    //4.绑定事件
+    for (var i = 0 ; i < titles.length ; i++){
+        var obj = titles[i]
+        //给元素对象   增加一个自定义属性
+        obj.bianhao = i
+
+
+
+        //onclick鼠标点击事件
+        obj.onclick = function (event){
+            //evenet  鼠标事件，点击谁就是谁的事件
+            // console.log('onclick')
+            // console.log(event.target)
+            
+            //classlist表示当前元素的class选择器的集合
+            //remove（classname）表示移除指定class 选择器
+            //add（classname）表示增加指定class 选择器
+            //对选中状态的切换
+            currentPage.classList.remove('selected')
+            event.target.classList.add('selected')
+            currentPage = event.target
+
+            //切换 内容
+            show.innerHTML = content[event.target.bianhao]
+
+        }
+
+    }
+
+
+
+</script>
+</html>

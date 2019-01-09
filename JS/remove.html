@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移除 子节点 要注意的问题</title>
+</head>
+<body>
+    <script>
+        var a_data = [1,2,3,4,5,6,7,8,9,10]
+        var b_data = a_data //变量的引用，一个变量赋给另一个变量
+        // b_data.pop()//a_data 也会改变
+        // console.log(a_data)
+
+        // for (var i = 0; i < b_data.length; i++){
+            ////删除时，i在增加，length也在改变，所以无法完全删除
+            // a_data.pop()     
+        // }
+        // console.log(b_data)
+        // console.log(a_data)
+
+        for (var i = 0; i < b_data.length; i++){
+            a_data.splice(i,1)
+        }
+        console.log(b_data)
+        console.log(a_data)
+        
+
+        var a = 1//常量
+        var b = a //变量的引用，一个变量赋给另一个变量
+        b = 2
+        // console.log(a)//不变
+
+        var a = "string"//常量
+        var b = a //变量的引用，一个变量赋给另一个变量
+        b = "hello"//不变
+
+    </script>
+</body>
+</html>

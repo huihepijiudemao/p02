@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>关联下拉列表</title>
+</head>
+<body>
+
+</body>
+<script>
+    //1.创建基本内容结构、
+    var title = document.createElement('lable')
+    //form lable input 都是表单
+    title.innerHTML = '请选择省份'
+    title.style.fontSize = '40px'
+    title.style.fontWeight = 'blod'
+    title.style.color = '#600'
+    document.body.appendChild(title)
+
+    //省
+    var proSelect = document.createElement('select')
+    // select 元素可创建单选或多选菜单。
+    // <select> 元素中的 <option> 标签用于定义列表中的可用选项。
+    proSelect.style.width = '100px'
+    proSelect.style.height = '40px'
+    document.body.appendChild(proSelect)
+
+    //城市
+    var citySelect = document.createElement('select')
+    citySelect.style.width = '100px'
+    citySelect.style.height = '40px'
+    document.body.appendChild(citySelect)
+
+    //2、定义数据
+    var proData = ['河南省','河北省','湖北省']
+    //定义省数据
+    var cityDate = []
+    //定义城市数据
+    cityDate.push(['郑州','三门峡','焦作'])
+    cityDate.push(['石家庄','邯郸','唐山'])
+    cityDate.push(['武汉'])
+    //把数据添加到城市数据的列表中
+
+
+    // 3. 将数据进行绑定
+    //3.1 绑定省数据
+    for (var i = 0; i < proData.length ; i++ ){
+        var opt = document.createElement('option')
+        opt.innerText = proData[i]
+        opt.value = i
+        proSelect.appendChild(opt)
+    }
+    ///3.2. 绑定城市数据
+    //默认城市的名称
+    for (i = 0;i<cityDate[0].length;i++){
+        //设置  默认城市
+        var opt = document.createElement('option')//创建option标签
+        opt.innerText = cityDate[0][i]//把默认标签写进去
+        citySelect.appendChild(opt)//把opt写进citySelect
+    }
+    //5.处理用户响应
+    proSelect.onchange = function (event){
+        // console.log('onchange')
+        var opts = citySelect.children
+        console.log(opts)
+        //opts  指的是citySelect里边的option
+        //5.1 清除原有内容
+        //从后往前删除
+        for (var i = opts.length-1 ; i >= 0 ; i-- ){
+            //每次删除最后一个 
+            citySelect.removeChild(opts[i])
+        }
+      
+        //5.2 找到选择的是第几个省
+        var proIndex = event.target.value
+        //获取省份的value值（0,1,2）
+        //省份['河南省 0','河北省 1','湖北省 2']
+        //城市cityDate(['郑州','三门峡','焦作'] 0,['石家庄','邯郸','唐山'] 1 ,['武汉'] 2 )
+        for (var i = 0; i < cityDate[proIndex].length ; i++ ){
+            var opt = document.createElement('option')
+            opt.innerText = cityDate[proIndex][i]
+            citySelect.appendChild(opt)
+        }
+    }
+
+
+    
+
+
+
+</script>
+</html>

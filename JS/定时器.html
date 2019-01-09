@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器</title>
+</head>
+<body style="color: red;font-size: 30px;text-align: center;">
+	<!-- 
+	定时器：每隔一段时间，按时按点来执行一件约定的事情（函数/方法）
+	闹钟 
+	定时的常用操作：1、计算 2、刷新页面
+
+	 -->
+	 <script>
+		var count = 0
+		// setInterval(function () {
+		// 	count++
+		// 	console.log(count)
+		// },1000);
+		function doSomething() {
+			count++
+			console.log(count)
+			// body...
+		}
+		//setInterval(doSomething,1000)
+		//1000间隔时间
+		//
+		function doWrite() {
+			// count++
+			document.body.innerHTML = ''
+			写之前先清空
+			// document.write(count)
+			dt =  Date.parse('2019/2/1')
+			var iMsec = dt-Date.now()
+			if (iMsec <= 0) {
+				return 
+			}
+			//iMsec 为毫秒数
+			//12月，24小时，60分钟，60秒，1000毫秒
+			var sec = iMsec / 1000
+			//毫秒转换成秒
+			var day = parseInt(sec / 3600 / 24)
+			//天  首先用总秒数求出总天数（整数）
+			var hour = parseInt((sec - day * 3600 * 24)/3600)
+			//时  减去天数之后剩下的秒数，算出小时 
+			var min = parseInt((sec - day * 3600 *24 - hour * 3600)/60)
+			//分
+			var seconds = parseInt(sec - day * 3600 *24 - hour * 3600 - min * 60)
+			//秒
+			var time = day + '天' + hour + '时' +  min + '分' + seconds + '秒'
+			console.log(time)	
+			document.body.innerHTML = time
+
+			document.querySelector('div#show').innerHTML = ''
+			document.querySelector('div#show').innerHTML = time
+		}
+		setInterval(doWrite,1000)
+		//永久定时器
+
+		// 15 15 70 上中下 满屏
+		// 中间 左定宽 
+		// 右
+		// 中
+		// 浮动实现，
+		// inline：block
+		function check() {
+			console.log('点击')
+		}
+
+	 </script>
+	 <div id="show"></div>
+	 <button onclick="check()">
+		测试定时器是否会阻塞程序
+
+	 </button>
+</body>
+</html>

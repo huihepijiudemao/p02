@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组的基本用法</title>
+</head>
+<body>
+	<!-- Array 也是ECMAScript 常用的数据类型 -->
+	<script>
+		//使用js中的数组来实现栈思想
+		//1、new的方式创建Array数组
+		// var a_array = new Array();
+		var a_array = Array();//创建一个空的数组
+		//通过下标添加元素
+		a_array[0] = 1;
+		a_array[1] = 2;
+		console.log(a_array,typeof a_array,typeof Array)
+		//通过方法添加元素
+		a_array.push(3)
+		a_array.push(4)
+		console.log(a_array)
+		//删除元素
+		a_array.pop()
+		//删除最后一个
+		console.log(a_array)
+
+
+		//栈思想（管子，一头堵住），先进后出，push + pop来实现
+		//队列思想（管子，两头相通），先进先出 push + shift 来实现
+		a_array.unshift(10)
+		//每次插数据，总是插到第一位
+		console.log(a_array)
+
+		a_array.shift()
+		//删除数据，每次都删除第一个
+		console.log(a_array)
+
+		//pop() 删除最后一个
+		//      删除所有
+		function clearALLItems(data){
+			if (!data || data.length == 0 ) {
+					//防止传入值 null 或者 []
+					return false
+			}
+			for (var i = 0 ; i <data.length ; i++) {
+				data.pop()  //删除全部				
+			}
+		}
+
+		//数组排序（热度，价格排序）
+		var b_array = [1,66,22,86,33,88,99]
+		//从小到大，升序
+		console.log(b_array.sort())
+		//排序之后的结果，破坏了原数组，原数组b_array发生改变
+		console.log(b_array) 
+	 	b_array = ['a','abc','c','d','e','f','g',100]
+	 	console.log(b_array.reverse())
+		 //reverse()反转
+		 // console.log(('hello world!!').reverse())反转不支持字符串
+		 // 
+		 //使用数组从大到小，先从小到大，再反转
+		 //sort()+reverse()
+	 	console.log(['1','a',4,6].sort().reverse())
+
+		 //把字符串  拼接成一个数组
+	 	var str_array = b_array.concat('hello','js')
+		 //赋值语句，不破坏原数组，原数组b_array不改变
+	 	console.log(str_array)
+	 	console.log(b_array)
+
+
+		 //splice()
+		 //splice(截取元素的下标，截取元素的个数) 
+		 //splice()
+		 //1.删除，截取
+	 	var c_array = [1,2,3,4,5,6]
+		 // var d_array = c_array.splice(1,1)
+		 // //从下标1开始，截取一个数据给d_array，原数组c_array为剩下的数组
+	 	var d_array = c_array.splice(2)
+		 //从下标2开始，截取后边所有的数据
+	 	console.log(d_array)//[3,4,5,6]  截取的结果赋给新数组
+	 	console.log(c_array)//[1,2]  截取之后剩下的数组
+			
+		 //2、插入功能
+		 //splice(插入位置的下标，0表示不删除，插入的数值1，插入的数值2，，，，，，)
+ 		var e_array = [1,2,3]
+	 	e_array.splice(1,0,6,'hello','world')
+	 	console.log(e_array)
+		 
+
+		 //3、替换功能
+		 //splice(替换元素的下标，1表示替换的个数/长度，替换的内容)
+	 	e_array.splice(1,1,'JS')
+	 	console.log(e_array)
+
+
+
+
+
+	</script>
+</body>
+</html>
